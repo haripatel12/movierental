@@ -1,0 +1,16 @@
+
+<form method="POST">
+{% csrf_token %}
+    <select name="movie">
+     {% for i in moviename %}
+         <option value="{{i.id}}">{{i.moviename}}</option>
+     {% endfor %}
+    </select>
+
+    <select name="customer">
+     {% for x in customername %}
+         <option value="{{x.id}}">{{x.first}} {{ x.last }}</option>
+     {% endfor %}
+    </select>
+<input type="submit" value="Assign">
+</form>

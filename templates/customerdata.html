@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CustomerDataTable</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'movie/customerdatastyle.css' %}">
+</head>
+<body>
+<table>
+    <tr>
+         <th>FirstName</th>
+         <th>LastName</th>
+        <th>Phone Number</th>
+        <th>Email</th>
+         <th>Adress</th>
+        <th>Delete</th>
+    </tr>
+    {% for item in customer_result %}
+    <tr>
+        <td>{{ item.first }}</td>
+        <td>{{ item.last }}</td>
+        <td>{{ item.phonenumber }}</td>
+        <td>{{ item.email }}</td>
+        <td>{{ item.address }}</td>
+    <td>
+                  <form action="/movie/deletecust/{{ item.id }}/" method="POST">
+                    {% csrf_token %}
+                    <button type="submit"> Delete </button>
+                </form>
+                </td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

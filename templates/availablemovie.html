@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AvailableMovie</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'movie/moviedatastyle.css' %}">
+</head>
+<body>
+<table>
+    <tr>
+         <th>Movie Name</th>
+         <th>Release Date</th>
+        <th>Genre</th>
+        <th>Price($)</th>
+        <th>Delete</th>
+
+
+    </tr>
+    {% for item in movie_result %}
+    <tr>
+        <td>{{ item.moviename }}</td>
+        <td>{{ item.releasedate }}</td>
+        <td>{{ item.genre }}</td>
+        <td>{{ item.price }}</td>
+    <td>
+                  <form action="/movie/deletemovie/{{ item.id }}/" method="POST">
+                    {% csrf_token %}
+                    <button type="submit"> Delete </button>
+                </form>
+                </td>
+
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

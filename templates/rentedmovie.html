@@ -1,0 +1,23 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'movie/moviedatastyle.css' %}">
+<table>
+    <tr>
+         <th>Customer Name Name</th>
+         <th>Movie Name</th>
+        <th> Return </th>
+
+    </tr>
+    {% for item in moviename %}
+    <tr>
+        <td>{{ item.assigncustomer }}</td>
+        <td>{{ item.moviename }}</td>
+
+<td>
+                  <form action="/movie/update/{{ item.id }}/" method="POST">
+                    {% csrf_token %}
+                    <button type="submit"> Return </button>
+                </form>
+                </td>
+    </tr>
+    {% endfor %}
+</table>
